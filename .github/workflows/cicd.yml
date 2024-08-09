@@ -32,4 +32,4 @@ jobs:
 
       # Environment Setup
       - name: Environment Setup
-        run: ${{ secrets.NICK_NAME }}
+        run: echo "TEST..."
