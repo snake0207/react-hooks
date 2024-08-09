@@ -8,7 +8,6 @@ export const useFadein = (duration = 1, delay) => {
 
   useEffect(() => {
     if (el.current) {
-      console.log(el.current);
       el.current.style.opacity = 1;
       el.current.style.transition = `opacity ${duration}s ease-in-out ${delay}s`;
     }
