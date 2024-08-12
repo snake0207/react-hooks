@@ -5,15 +5,16 @@ import { usePreventLeave } from "./hooks/usePreventLeave";
 import { useFadein } from "./hooks/useFadein";
 import { useNetwork } from "./hooks/useNetwork";
 import { useScroll } from "./hooks/useScroll";
+import { useFullScreen } from "./hooks/useFullScreen";
 
 export function App() {
-  const { x, y } = useScroll();
+  const { refEle, fullScreen } = useFullScreen();
 
   return (
-    <div style={{ height: `1000vh` }}>
-      <h1 style={{ position: "fixed", color: y > 100 ? "red" : "blue" }}>
-        Scroll : {y}
-      </h1>
+    <div>
+      <img ref={refEle} src="sea.jpg" />
+      <button onClick={fullScreen}>Full Screen</button>
+      {/* <button onClick={normalScreen}>Normal Screen</button> */}
     </div>
   );
 }
