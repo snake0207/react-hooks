@@ -6,20 +6,19 @@ import { useFadein } from "./hooks/useFadein";
 import { useNetwork } from "./hooks/useNetwork";
 import { useScroll } from "./hooks/useScroll";
 import { useFullScreen } from "./hooks/useFullScreen";
+import { useNotification } from "./hooks/useNotification";
 
 export function App() {
-  const { refEle, fullScreen, exitFullScreen } = useFullScreen();
+  const title = "Chekc your system !";
+  const options = {
+    body: `click me`,
+    image: `https://acrofuture.com/images/acrofuture.svg`,
+  };
+  const notification = useNotification(title, options);
 
   return (
-    <div width="80%" height="80%" style={{ border: `1px solid red` }}>
-      <img ref={refEle} src="sea.jpg" />
-      <button onClick={fullScreen}>Full Screen</button>
-      <button
-        onClick={exitFullScreen}
-        style={{ position: "fixed", top: 0, left: 0 }}
-      >
-        Exit Full Screen
-      </button>
+    <div>
+      <button onClick={notification}>Fire Notification</button>
     </div>
   );
 }
