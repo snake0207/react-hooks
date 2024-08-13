@@ -7,18 +7,17 @@ import { useNetwork } from "./hooks/useNetwork";
 import { useScroll } from "./hooks/useScroll";
 import { useFullScreen } from "./hooks/useFullScreen";
 import { useNotification } from "./hooks/useNotification";
+import { useAxios } from "./hooks/useAxios";
 
 export function App() {
-  const title = "Chekc your system !";
-  const options = {
-    body: `click me`,
-    image: `https://acrofuture.com/images/acrofuture.svg`,
-  };
-  const notification = useNotification(title, options);
+  const [count, setCount] = useState(0);
+  const opts = { url: `https://yts.mx/api/v2/list_movies.json` };
+  const { loading, error, data, refetch } = useAxios(opts);
+  console.log(`loading:${loading}\nerror:${error}\ndata:${data}`);
 
   return (
     <div>
-      <button onClick={notification}>Fire Notification</button>
+      <button onClick={() => refetch(count)}>Fetch Data</button>
     </div>
   );
 }
