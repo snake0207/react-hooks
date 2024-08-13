@@ -8,16 +8,16 @@ import { useScroll } from "./hooks/useScroll";
 import { useFullScreen } from "./hooks/useFullScreen";
 import { useNotification } from "./hooks/useNotification";
 import { useAxios } from "./hooks/useAxios";
+import { useLocation } from "./hooks/useLocation";
 
 export function App() {
-  const [count, setCount] = useState(0);
-  const opts = { url: `https://yts.mx/api/v2/list_movies.json` };
-  const { loading, error, data, refetch } = useAxios(opts);
-  console.log(`loading:${loading}\nerror:${error}\ndata:${data}`);
+  const { latitude, longitude } = useLocation(true);
 
   return (
     <div>
-      <button onClick={() => refetch(count)}>Fetch Data</button>
+      <h3>
+        {latitude} / {longitude}
+      </h3>
     </div>
   );
 }
