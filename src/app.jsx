@@ -9,16 +9,10 @@ import { useFullScreen } from "./hooks/useFullScreen";
 import { useNotification } from "./hooks/useNotification";
 import { useAxios } from "./hooks/useAxios";
 import { useLocation } from "./hooks/useLocation";
+import { useToast } from "./hooks/useToast";
 
 export function App() {
-  const { latitude, longitude, getLocation } = useLocation(true);
+  const toast = useToast("sample");
 
-  return (
-    <div>
-      <h3>
-        {latitude} / {longitude}
-      </h3>
-      <button onClick={getLocation}>Click me</button>
-    </div>
-  );
+  return <div>{toast}</div>;
 }
