@@ -11,13 +11,14 @@ import { useAxios } from "./hooks/useAxios";
 import { useLocation } from "./hooks/useLocation";
 
 export function App() {
-  const { latitude, longitude } = useLocation(true);
+  const { latitude, longitude, getLocation } = useLocation(true);
 
   return (
     <div>
       <h3>
         {latitude} / {longitude}
       </h3>
+      <button onClick={getLocation}>Click me</button>
     </div>
   );
 }
