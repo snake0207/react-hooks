@@ -12,7 +12,7 @@ import { useLocation } from "./hooks/useLocation";
 import { useToast } from "./hooks/useToast";
 
 export function App() {
-  const toast = useToast("sample");
+  const toast = useToast("sample", 5);
 
   return <div>{toast}</div>;
 }
