@@ -10,9 +10,18 @@ import { useNotification } from "./hooks/useNotification";
 import { useAxios } from "./hooks/useAxios";
 import { useLocation } from "./hooks/useLocation";
 import { useToast } from "./hooks/useToast";
+import { usePopup } from "./hooks/usePopup";
 
 export function App() {
-  const toast = useToast("sample", 5);
+  const onConfirm = () => {
+    console.log("handleConfirm");
+  };
 
-  return <div>{toast}</div>;
+  const popup = usePopup({
+    title: "Title",
+    message: "Are you delete this record ?",
+    onConfirm: onConfirm,
+  });
+
+  return <div>{popup}</div>;
 }
