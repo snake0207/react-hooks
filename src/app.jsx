@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useClick } from "./hooks/useClick";
 import { useConfirm } from "./hooks/useConfirm";
 import { usePreventLeave } from "./hooks/usePreventLeave";
@@ -11,17 +11,22 @@ import { useAxios } from "./hooks/useAxios";
 import { useLocation } from "./hooks/useLocation";
 import { useToast } from "./hooks/useToast";
 import { usePopup } from "./hooks/usePopup";
+import { usePrevious } from "./hooks/usePrevious";
 
 export function App() {
-  const onConfirm = () => {
-    console.log("handleConfirm");
-  };
+  const [count, setCount] = useState(0);
 
-  const popup = usePopup({
-    title: "Title",
-    message: "Are you delete this record ?",
-    onConfirm: onConfirm,
-  });
+  function handleAlertClick() {
+    setTimeout(() => {
+      alert("You clicked on: " + count);
+    }, 3000);
+  }
 
-  return <div>{popup}</div>;
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <button onClick={handleAlertClick}>Show alert</button>
+    </div>
+  );
 }
