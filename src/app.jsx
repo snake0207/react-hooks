@@ -25,7 +25,7 @@ export function App() {
     datas: friends,
     k: "id",
     v: "age",
-    callback: (target) => console.log(`onChange value : ${target}`),
+    onChange: (target) => console.log(`change value : ${target}`),
     width: 300,
     backgroundColor: "lightgray",
     color: "blue",
