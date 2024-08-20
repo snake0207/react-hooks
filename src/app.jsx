@@ -12,21 +12,16 @@ import { useLocation } from "./hooks/useLocation";
 import { useToast } from "./hooks/useToast";
 import { usePopup } from "./hooks/usePopup";
 import { usePrevious } from "./hooks/usePrevious";
+import { useSelect } from "./hooks/useSelect";
+
+const friends = [
+  { id: 1, name: "Phoebe", age: "P35-" },
+  { id: 2, name: "Rachel", age: "R27" },
+  { id: 3, name: "Ross", age: "S14" },
+];
 
 export function App() {
-  const [count, setCount] = useState(0);
+  const select = useSelect(friends, "name", "age");
 
-  function handleAlertClick() {
-    setTimeout(() => {
-      alert("You clicked on: " + count);
-    }, 3000);
-  }
-
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>Click me</button>
-      <button onClick={handleAlertClick}>Show alert</button>
-    </div>
-  );
+  return <div>{select}</div>;
 }
