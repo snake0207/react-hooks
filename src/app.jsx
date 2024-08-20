@@ -21,7 +21,9 @@ const friends = [
 ];
 
 export function App() {
-  const select = useSelect(friends, "name", "age");
+  const select = useSelect(friends, "name", "age", (target) =>
+    console.log(`onChange value : ${target}`)
+  );
 
   return <div>{select}</div>;
 }
